@@ -1,7 +1,3 @@
-%define name		libdvbpsi
-%define version		0.1.5
-%define release		%mkrel 2
-
 %define major		4
 %define oname		%{name}%major
 %define mdkversion		%(perl -pe '/(\\d+)\\.(\\d)\\.?(\\d)?/; $_="$1$2".($3||0)' /etc/mandrake-release)
@@ -17,9 +13,9 @@
 
 
 Summary:	A library for decoding and generating MPEG 2 and DVB PSI sections
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		libdvbpsi
+Version:	0.1.5
+Release:	%mkrel 3
 License:	GPL
 URL:		http://www.videolan.org/libdvbpsi/
 Group:		System/Libraries
