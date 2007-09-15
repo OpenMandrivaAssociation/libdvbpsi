@@ -1,6 +1,6 @@
 %define major		4
 %define oname		%{name}%major
-%define mdkversion		%(perl -pe '/(\\d+)\\.(\\d)\\.?(\\d)?/; $_="$1$2".($3||0)' /etc/mandrake-release)
+%define mdkversion		%(perl -pe '/(\\d+)\\.(\\d)\\.?(\\d)?/; $_="$1$2".($3||0)' /etc/mandriva-release)
 %if %mdkversion >= 910
 %define lib_name	%mklibname dvbpsi %{major}
 %define lib_name_devel  %mklibname dvbpsi %{major} -d
