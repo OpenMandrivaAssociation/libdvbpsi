@@ -1,21 +1,13 @@
-%define major		4
+%define major		5
 %define oname		%{name}%major
-%define mdkversion		%(perl -pe '/(\\d+)\\.(\\d)\\.?(\\d)?/; $_="$1$2".($3||0)' /etc/mandriva-release)
-%if %mdkversion >= 910
-%define lib_name	%mklibname dvbpsi %{major}
-%define lib_name_devel  %mklibname dvbpsi %{major} -d
-%else
-%define lib_name	libdvbpsi%{major}
-%define lib_name_devel  libdvbpsi%{major}-devel
-%endif
-#fixed2
-%{?!mkrel:%define mkrel(c:) %{-c: 0.%{-c*}.}%{!?_with_unstable:%(perl -e '$_="%{1}";m/(.\*\\D\+)?(\\d+)$/;$rel=${2}-1;re;print "$1$rel";').%{?subrel:%subrel}%{!?subrel:1}.%{?distversion:%distversion}%{?!distversion:%(echo $[%{mdkversion}/10])}}%{?_with_unstable:%{1}}%{?distsuffix:%distsuffix}%{?!distsuffix:mdk}}
 
+%define libname %mklibname dvbpsi %major
+%define develname %mklibname -d dvbpsi
 
 Summary:	A library for decoding and generating MPEG 2 and DVB PSI sections
 Name:		libdvbpsi
-Version:	0.1.5
-Release:	%mkrel 3
+Version:	0.1.6
+Release:	%mkrel 1
 License:	GPL
 URL:		http://www.videolan.org/libdvbpsi/
 Group:		System/Libraries
@@ -28,24 +20,25 @@ MPEG 2 TS and DVB PSI tables. The important features are:
  * PAT decoder and generator.
  * PMT decoder and generator.
 
-%package -n %{lib_name}
+%package -n %{libname}
 Summary:	A library for decoding and generating MPEG 2 and DVB PSI sections
 Group:		System/Libraries
 Provides:	%name
 
-%description -n %{lib_name}
+%description -n %{libname}
 libdvbpsi is a simple library designed for decoding and generating
 MPEG 2 TS and DVB PSI tables. The important features are:
  * PAT decoder and generator.
  * PMT decoder and generator.
 
-%package -n %lib_name_devel
+%package -n %develname
 Summary:	Development tools for programs which will use the libdvbpsi library
 Group:		Development/C
-Provides:	%name-devel
-Requires:	%{lib_name} = %{version}
+Provides:	%name-devel = %version-%release
+Requires:	%{libname} = %{version}
+Obsoletes: %mklibname -d dvbpsi 4
 
-%description -n %lib_name_devel
+%description -n %develname
 The %{name}-devel package includes the header files and static libraries
 necessary for developing programs which will manipulate MPEG 2 and DVB PSI
 information using the %{name} library.
@@ -72,16 +65,16 @@ rm -rf %buildroot
 %clean
 rm -rf %buildroot
 
-%post -n %{lib_name} -p /sbin/ldconfig
+%post -n %{libname} -p /sbin/ldconfig
 
-%postun -n %{lib_name} -p /sbin/ldconfig
+%postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{lib_name}
+%files -n %{libname}
 %defattr(-,root,root,-)
 %doc AUTHORS README COPYING ChangeLog
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
-%files -n %lib_name_devel
+%files -n %develname
 %defattr(-,root,root)
 %doc COPYING
 %{_libdir}/*a
