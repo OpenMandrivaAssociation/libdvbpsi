@@ -12,6 +12,7 @@ License:	GPL
 URL:		http://www.videolan.org/libdvbpsi/
 Group:		System/Libraries
 Source:		http://www.videolan.org/pub/videolan/libdvbpsi/%{version}/%{oname}-%{version}.tar.bz2
+BuildRoot:	%_tmppath/%name-%version-%release-root
 
 %description
 libdvbpsi is a simple library designed for decoding and generating
