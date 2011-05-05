@@ -1,4 +1,4 @@
-%define major		6
+%define major		7
 %define oname		%{name}
 
 %define libname %mklibname dvbpsi %major
@@ -6,7 +6,7 @@
 
 Summary:	A library for decoding and generating MPEG 2 and DVB PSI sections
 Name:		libdvbpsi
-Version:	0.1.7
+Version:	0.2.0
 Release:	%mkrel 1
 License:	GPLv2+
 URL:		http://www.videolan.org/libdvbpsi/
