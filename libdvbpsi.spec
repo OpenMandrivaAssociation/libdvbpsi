@@ -8,7 +8,7 @@ Version:	1.3.3
 Release:	2
 License:	GPLv2+
 Group:		System/Libraries
-Url:		http://www.videolan.org/libdvbpsi/
+Url:		https://www.videolan.org/libdvbpsi/
 Source0:	http://www.videolan.org/pub/videolan/libdvbpsi/%{version}/%{name}-%{version}.tar.bz2
 
 %description
