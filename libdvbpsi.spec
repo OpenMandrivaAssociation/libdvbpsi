@@ -11,6 +11,11 @@ Group:		System/Libraries
 Url:		https://www.videolan.org/libdvbpsi/
 Source0:	http://www.videolan.org/pub/videolan/libdvbpsi/%{version}/%{name}-%{version}.tar.bz2
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 %description
 libdvbpsi is a simple library designed for decoding and generating
 MPEG 2 TS and DVB PSI tables. The important features are:
